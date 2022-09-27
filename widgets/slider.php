@@ -1,4 +1,5 @@
 <?php
+
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
@@ -12,7 +13,7 @@ class Slider extends \Elementor\Widget_Base
         wp_register_style('slider-css', WBS_PLUGIN_URL . 'assets/css/slider-custom.css');
         wp_register_script('slider-jquery', WBS_PLUGIN_URL . 'assets/js/jquery.min.js');
         wp_register_script('slider-slick-js', WBS_PLUGIN_URL . 'assets/js/slick.min.js');
-        wp_register_script('slider-js', WBS_PLUGIN_URL . 'assets/js/slider.js',[ 'elementor-frontend' ], '1.0.0', true);
+        wp_register_script('slider-js', WBS_PLUGIN_URL . 'assets/js/slider.js', ['elementor-frontend'], '1.0.0', true);
     }
 
     public function get_name()
@@ -105,7 +106,7 @@ class Slider extends \Elementor\Widget_Base
             'btn_text',
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'label' => esc_html__( 'Button Text', 'plugin-name' ),
+                'label' => esc_html__('Button Text', 'plugin-name'),
                 'default' => 'Read More'
             ]
         );
@@ -114,7 +115,7 @@ class Slider extends \Elementor\Widget_Base
             'btn_link',
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'label' => esc_html__( 'Button Link', 'plugin-name' ),
+                'label' => esc_html__('Button Link', 'plugin-name'),
                 'default' => '#'
             ]
         );
@@ -157,43 +158,43 @@ class Slider extends \Elementor\Widget_Base
             'slide_to_display',
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'label' => esc_html__( 'Slide To Display', 'plugin-name' ),
+                'label' => esc_html__('Slide To Display', 'plugin-name'),
                 'default' => '3'
             ]
         );
 
         $this->add_control(
-			'auto_play',
-			[
-				'label' => esc_html__( 'Auto Play', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'your-plugin' ),
-				'label_off' => esc_html__( 'No', 'your-plugin' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+            'auto_play',
+            [
+                'label' => esc_html__('Auto Play', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'your-plugin'),
+                'label_off' => esc_html__('No', 'your-plugin'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
 
         $this->add_control(
             'auto_play_speed',
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
-                'label' => esc_html__( 'Play Speed In Milliseconds', 'plugin-name' ),
+                'label' => esc_html__('Play Speed In Milliseconds', 'plugin-name'),
                 'default' => '3000'
             ]
         );
 
         $this->add_control(
-			'show_title_on_slide',
-			[
-				'label' => esc_html__( 'Show Title On Slide', 'plugin-name' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__( 'Yes', 'your-plugin' ),
-				'label_off' => esc_html__( 'No', 'your-plugin' ),
-				'return_value' => 'yes',
-				'default' => 'yes',
-			]
-		);
+            'show_title_on_slide',
+            [
+                'label' => esc_html__('Show Title On Slide', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__('Yes', 'your-plugin'),
+                'label_off' => esc_html__('No', 'your-plugin'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
 
         $this->end_controls_section();
 
@@ -202,68 +203,165 @@ class Slider extends \Elementor\Widget_Base
         --------------------------------- **/
 
         $this->start_controls_section(
-			'slide_title_style',
-			[
-				'label' => esc_html__( 'Title', 'elementor' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
-			]
-		);
+            'slide_title_style',
+            [
+                'label' => esc_html__('Title', 'elementor'),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
 
         $this->add_responsive_control(
-			'align',
-			[
-				'label' => esc_html__('Alignment', 'elementor'),
-				'type' => \Elementor\Controls_Manager::CHOOSE,
-				'options' => [
-					'left' => [
-						'title' => esc_html__('Left', 'elementor'),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__('Center', 'elementor'),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__('Right', 'elementor'),
-						'icon' => 'eicon-text-align-right',
-					],
-					'justify' => [
-						'title' => esc_html__('Justified', 'elementor'),
-						'icon' => 'eicon-text-align-justify',
-					],
-				],
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .slide_title' => 'text-align: {{VALUE}};',
-				],
-				'separator' => 'before'
-			],
-		);
+            'align',
+            [
+                'label' => esc_html__('Alignment', 'elementor'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'elementor'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'elementor'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'elementor'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                    'justify' => [
+                        'title' => esc_html__('Justified', 'elementor'),
+                        'icon' => 'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => '',
+                'selectors' => [
+                    '{{WRAPPER}} .slide_title' => 'text-align: {{VALUE}};',
+                ],
+                'separator' => 'before'
+            ],
+        );
 
         $this->add_control(
-			'footer_caption_color',
+            'footer_caption_color',
+            [
+                'label' => esc_html__('Footer Caption Color', 'elementor'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'selectors' => [
+                    '{{WRAPPER}} .slide-caption' => 'background: {{VALUE}};',
+                ],
+                'global' => [
+                    'default' => Global_Colors::COLOR_PRIMARY,
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+
+        ////////////Edited/////////////////
+        $this->start_controls_section(
+            'slide_button_style',
+            [
+                'label' => esc_html__('Button', 'elementor'),
+                'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+
+
+        $this->add_responsive_control(
+            'align_btn',
+            [
+                'label' => esc_html__('Alignment', 'elementor'),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__('Left', 'elementor'),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__('Center', 'elementor'),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__('Right', 'elementor'),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                    'justify' => [
+                        'title' => esc_html__('Justified', 'elementor'),
+                        'icon' => 'eicon-text-align-justify',
+                    ],
+                ],
+                'default' => '',
+                'selectors' => [
+
+                    '{{WRAPPER}} .more-link' => 'text-align: {{VALUE}};',
+
+                ],
+                'separator' => 'before'
+            ],
+        );
+
+       
+        $this->add_control(
+			'Button_text_color',
 			[
-				'label' => esc_html__( 'Footer Caption Color', 'elementor' ),
+				'label' => esc_html__( 'Button Text Color', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .slide-caption' => 'background: {{VALUE}};',
+					'{{WRAPPER}} .more-link' => 'color: {{VALUE}};',
 				],
 				'global' => [
 					'default' => Global_Colors::COLOR_PRIMARY,
 				],
 			]
 		);
+           
+        $this->add_responsive_control(
+			'Slider_bottom_space',
+			[
+				'label' => esc_html__( 'Footer Spacing', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} figcaption' => 'margin-top: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
 
-
-
+        $this->add_responsive_control(
+			'Slider_top_space',
+			[
+				'label' => esc_html__( 'Image Top Spacing', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .story-slideshow' => 'margin-top: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+     
         $this->end_controls_section();
-
     }
 
 
     protected function render()
     {
         $settings = $this->get_settings_for_display();
+
+        // echo "<pre>";
+        // print_r ($settings);
+        // exit();
 ?>
         <div class="story-slideshow">
             <?php
@@ -273,44 +371,73 @@ class Slider extends \Elementor\Widget_Base
                     <figure>
                         <div class="slide-ratio">
                             <img src="<?php echo  $value['slide_image']['url'] ?>" />
-                            <?php if($settings['show_title_on_slide']=='yes'){ ?>
+                            <?php if ($settings['show_title_on_slide'] == 'yes') { ?>
                                 <span class="story-slide-overlay">
                                     <h6><?php echo $value['slide_title'] ?></h6>
                                 </span>
-                            <?php }?>
+                            <?php } ?>
                         </div>
+
                         <figcaption class="slide-caption">
-                            <span class="slide_title"><?php echo $value['slide_title'] ?></span> 
-                            <a class="more-link" href="<?php echo $value['slide_redirect_url']['url']?>"><?php echo $value['btn_text'] ?> ⟶</a>
+                            <span class="slide_title"><?php echo $value['slide_title'] ?></span>
+
+                            <a class="more-link" href="<?php echo $value['slide_redirect_url']['url'] ?>"><?php echo $value['btn_text'] ?>⟶</a>
+
                         </figcaption>
+
+
                     </figure>
+
                 </div>
             <?php }  ?>
         </div>
-        <input type="hidden" id="slider_settings" value='<?php echo json_encode($settings,true);?>'>
+        <input type="hidden" id="slider_settings" value='<?php echo json_encode($settings, true); ?>'>
     <?php
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     protected function content_template()
     {
     ?>
         <# if ( settings.list.length ) { #>
             <div class="story-slideshow">
-            <# _.each( settings.list, function( item ) {   #>
-                <div class="story-slide">
-                    <figure>
-                        <div class="slide-ratio">
-                            <img height="200" width="200" src="{{{ item.slide_image.url }}}">
-                            <span class="story-slide-overlay">
-                                <h2>{{{ item.slide_title }}}</h2>
-                            </span>
-                        </div>
-                        <figcaption class="slide-caption"><span>{{{ item.slide_title }}}</span> <a class="more-link" href="{{{ item.slide_redirect_url.url }}}">more ⟶</a></figcaption>
-                    </figure>
-                </div>
-            <# }); #>
+                <# _.each( settings.list, function( item ) { #>
+                    <div class="story-slide">
+                        <figure>
+                            <div class="slide-ratio">
+                                <img height="200" width="200" src="{{{ item.slide_image.url }}}">
+                                <span class="story-slide-overlay">
+                                    <h2>{{{ item.slide_title }}}</h2>
+                                </span>
+                            </div>
+                            <figcaption class="slide-caption"><span>{{{ item.slide_title }}}</span> <a class="more-link" href="{{{ item.slide_redirect_url.url }}}">more ⟶</a></figcaption>
+                        </figure>
+                    </div>
+                    <# }); #>
             </div>
-        <# } #>
+            <# } #>
         <?php
     }
 }
