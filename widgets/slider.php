@@ -350,6 +350,46 @@ class Slider extends \Elementor\Widget_Base
 				]
 			]
 		);
+
+        //Footer 
+
+        
+		$this->add_responsive_control(
+			'height',
+			[
+				'label' => esc_html__( 'Footer Height', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'default' => [
+					'unit' => 'px',
+				],
+				'tablet_default' => [
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'unit' => '%',
+				],
+				'size_units' => ['px', 'vw', '%' ],
+				'range' => [
+					'%' => [
+						'min' => 1,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 40,
+						'max' => 250,
+					],
+					'vw' => [
+						'min' => 10,
+						'max' => 40,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} figcaption' => 'height: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		
+        //Footer 
      
         $this->end_controls_section();
     }
@@ -380,9 +420,7 @@ class Slider extends \Elementor\Widget_Base
 
                         <figcaption class="slide-caption">
                             <span class="slide_title"><?php echo $value['slide_title'] ?></span>
-
                             <a class="more-link" href="<?php echo $value['slide_redirect_url']['url'] ?>"><?php echo $value['btn_text'] ?>⟶</a>
-
                         </figcaption>
 
 
