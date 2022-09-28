@@ -258,7 +258,7 @@ class Slider extends \Elementor\Widget_Base
         $this->end_controls_section();
 
 
-        ////////////Edited/////////////////
+        ////////////Edited again/////////////////
         $this->start_controls_section(
             'slide_button_style',
             [
