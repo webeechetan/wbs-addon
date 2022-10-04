@@ -8,15 +8,14 @@ Text Domain: essential-elementor-widget
 */
 define( 'WBS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
+require_once(__DIR__ .'./case-study.php');
 
 function register_custom_widget($widgets_master)
 {
-    // require_once(__DIR__.'/widgets/slider.php');
     require_once(__DIR__.'/widgets/slider.php');
     require_once(__DIR__.'/widgets/feature-box.php');
     $widgets_master->register(new \Slider() );
     $widgets_master->register(new \Feature_Box() );
-    
 }
 
 function add_elementor_widget_categories( $elements_manager ) {
@@ -34,5 +33,10 @@ function add_elementor_widget_categories( $elements_manager ) {
 add_action( 'elementor/elements/categories_registered', 'add_elementor_widget_categories' );
 
 add_action('elementor/widgets/register','register_custom_widget');
+
+
+// Adding Custom Post Types
+
+add_action( 'init', 'register_case_study' );
 
 ?>
