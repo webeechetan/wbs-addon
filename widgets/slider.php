@@ -120,6 +120,39 @@ class Slider extends \Elementor\Widget_Base
             ]
         );
 
+          //To control the image description
+
+            $repeater->add_control(
+                'img-desc',
+                [
+                    'label' => 'Image Description',
+                    'type' => \Elementor\Controls_Manager::WYSIWYG,
+                    'default' => 'Some example content. Start Editing Here. With media upload'
+                ]
+            );
+
+            $this->add_group_control(
+                \Elementor\Group_Control_Typography::get_type(),
+                [
+                    'name' => 'description_typography',
+                    'selector' => '{{WRAPPER}} .img_description',
+                    'global' => [
+                        'default' => Global_Typography::TYPOGRAPHY_TEXT,
+                    ],
+                ]
+            );
+
+
+        //   $this->add_control(
+        //     'img-desc',
+        //     [
+        //         'label' => 'Image Description',
+        //         'type' => \Elementor\Controls_Manager::WYSIWYG,
+        //         'default' => 'Some example content. Start Editing Here. With media upload'
+        //     ]
+        // );
+
+
         $this->add_control(
             'list',
             [
@@ -159,7 +192,7 @@ class Slider extends \Elementor\Widget_Base
             [
                 'type' => \Elementor\Controls_Manager::TEXT,
                 'label' => esc_html__('Slide To Display', 'plugin-name'),
-                'default' => '3'
+                'default' => '2',
             ]
         );
 
@@ -172,6 +205,22 @@ class Slider extends \Elementor\Widget_Base
                 'label_off' => esc_html__('No', 'your-plugin'),
                 'return_value' => 'yes',
                 'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'slide_direction',
+            [
+
+                'label' => esc_html__('Slide Direction','plugin-name'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+
+				'options' => [
+					'left' => 'Left',
+					'right' => 'Right',
+					'default' => 'Default',
+				],
+				'default' => 'left',
             ]
         );
 
@@ -194,7 +243,105 @@ class Slider extends \Elementor\Widget_Base
                 'return_value' => 'yes',
                 'default' => 'yes',
             ]
+            );
+
+
+            /////////Slider pause on hover/////
+            
+            
+        $this->add_control(
+            'Slide-hover',
+            [
+                'label' => esc_html__('Pause on Hover', 'plugin-name'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                 'label_on' => esc_html__('Yes', 'your-plugin'),
+                 'label_off' => esc_html__('No', 'your-plugin'),
+                 'return_value' => 'yes',
+                 'default' => 'yes',
+             ]
         );
+
+            /////////Slider pause on hover/////
+
+
+            //To control the size of the image via dropdown
+            $this->add_group_control(
+                \Elementor\Group_Control_Image_Size::get_type(),
+                [
+                    'name' => 'image',
+                    'default' => 'full',
+                    'separator' => 'none',
+                ]
+            );
+
+            //To control the Title size 
+            $this->add_control(
+                'title_size',
+                [
+                    'label' => esc_html__('Title HTML Tag', 'elementor'),
+                    'type' => \Elementor\Controls_Manager::SELECT,
+                    'options' => [
+                        'h1' => 'H1',
+                        'h2' => 'H2',
+                        'h3' => 'H3',
+                        'h4' => 'H4',
+                        'h5' => 'H5',
+                        'h6' => 'H6',
+                        'div' => 'div',
+                        'span' => 'span',
+                        'p' => 'p',
+                    ],
+                    'default' => 'h4',
+                    'separator' => 'after'
+                ]
+            );
+    
+
+           // Workig To give the border to the image
+            $this->add_group_control(
+                \Elementor\Group_Control_Border::get_type(),
+                [
+                    'name'=> 'img_border',
+                    'selector' => '{{WRAPPER}} img',
+                    'separator' => 'before',
+
+                ]
+            );
+
+            //Working To give the radius to the image border
+
+            $this->add_responsive_control(
+                'image_border_radius',
+                [
+                    'label' => esc_html__( 'Image Border Radius', 'elementor' ),
+                    'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', '%' ],
+                    'selectors' => [
+                        '{{WRAPPER}} img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            );
+
+
+            //Working this is to change the color of image description
+            $this->add_control(
+                'description_color',
+                [
+                    'label' => esc_html__( 'Description Color', 'elementor' ),
+                    'type' => \Elementor\Controls_Manager::COLOR,
+                    'default' => '',
+                    'selectors' => [
+                        '{{WRAPPER}} .img_description' => 'color: {{VALUE}};',
+                    ],
+                    'global' => [
+                        'default' => Global_Colors::COLOR_TEXT,
+                    ],
+                ]
+            );
+    
+    
+    
+    
 
         $this->end_controls_section();
 
@@ -399,22 +546,31 @@ class Slider extends \Elementor\Widget_Base
     {
         $settings = $this->get_settings_for_display();
 
-        // echo "<pre>";
-        // print_r ($settings);
-        // exit();
+        //echo "<pre>";
+       // echo $settings['img-desc'];
+       
+        //exit();
+        //print_r ($settings); 
+        //exit();
 ?>
         <div class="story-slideshow">
             <?php
             foreach ($settings['list'] as  $value) {
             ?>
                 <div class="story-slide">
+
                     <figure>
                         <div class="slide-ratio">
-                            <img src="<?php echo  $value['slide_image']['url'] ?>" />
+
+                        <img src="<?php echo $value['slide_image']['url'] ?>" />
+
                             <?php if ($settings['show_title_on_slide'] == 'yes') { ?>
                                 <span class="story-slide-overlay">
                                     <h6><?php echo $value['slide_title'] ?></h6>
+                                    <p class="img_description"><?php echo $value['img-desc']?></p>
+
                                 </span>
+
                             <?php } ?>
                         </div>
 
@@ -422,7 +578,6 @@ class Slider extends \Elementor\Widget_Base
                             <span class="slide_title"><?php echo $value['slide_title'] ?></span>
                             <a class="more-link" href="<?php echo $value['slide_redirect_url']['url'] ?>"><?php echo $value['btn_text'] ?>⟶</a>
                         </figcaption>
-
 
                     </figure>
 
@@ -432,10 +587,6 @@ class Slider extends \Elementor\Widget_Base
         <input type="hidden" id="slider_settings" value='<?php echo json_encode($settings, true); ?>'>
     <?php
     }
-
-
-
-
 
 
 
