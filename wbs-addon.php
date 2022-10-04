@@ -8,7 +8,7 @@ Text Domain: essential-elementor-widget
 */
 define( 'WBS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-require_once(__DIR__ .'./case-study.php');
+require_once(__DIR__ .'/post-types/case-study.php');
 
 function register_custom_widget($widgets_master)
 {
