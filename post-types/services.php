@@ -1,9 +1,9 @@
 <?php
-function register_case_study(){
+function register_services(){
 	$args = [
 		'labels' =>[
-			'name' => 'Case Studies',
-			'singular_name' => 'Case Study'
+			'name' => 'Services',
+			'singular_name' => 'Services'
 		],
 		'hierarchical' => false,
 		'public' => true,
@@ -13,8 +13,8 @@ function register_case_study(){
 			'editor',
 			'thumbnail',
 		],
-		'menu_icon' => 'dashicons-book',
+		'menu_icon' => 'dashicons-hammer',
 		'show_in_rest' => true,
 	];
-	register_post_type('case_study',$args);
+	register_post_type('services',$args);
 }

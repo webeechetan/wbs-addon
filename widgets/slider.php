@@ -295,6 +295,54 @@ class Slider extends \Elementor\Widget_Base
                     'separator' => 'after'
                 ]
             );
+
+            $this->add_control(
+                'previous_icon',
+                [
+                    'label' => esc_html__( 'Previous Icon', 'textdomain' ),
+                    'type' => \Elementor\Controls_Manager::ICONS,
+                    'default' => [
+                        'value' => 'fas fa-circle',
+                        'library' => 'fa-solid',
+                    ],
+                    'recommended' => [
+                        'fa-solid' => [
+                            'circle',
+                            'dot-circle',
+                            'square-full',
+                        ],
+                        'fa-regular' => [
+                            'circle',
+                            'dot-circle',
+                            'square-full',
+                        ],
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'next_icon',
+                [
+                    'label' => esc_html__( 'Next Icon', 'textdomain' ),
+                    'type' => \Elementor\Controls_Manager::ICONS,
+                    'default' => [
+                        'value' => 'fas fa-circle',
+                        'library' => 'fa-solid',
+                    ],
+                    'recommended' => [
+                        'fa-solid' => [
+                            'circle',
+                            'dot-circle',
+                            'square-full',
+                        ],
+                        'fa-regular' => [
+                            'circle',
+                            'dot-circle',
+                            'square-full',
+                        ],
+                    ],
+                ]
+            );
     
 
            // Workig To give the border to the image
@@ -553,6 +601,7 @@ class Slider extends \Elementor\Widget_Base
         //print_r ($settings); 
         //exit();
 ?>
+        <button class="slide_previous"><?php print_r($settings['next_icon'])?></button>
         <div class="story-slideshow">
             <?php
             foreach ($settings['list'] as  $value) {
@@ -584,28 +633,10 @@ class Slider extends \Elementor\Widget_Base
                 </div>
             <?php }  ?>
         </div>
+        <button class="slide_next">Next</button>
         <input type="hidden" id="slider_settings" value='<?php echo json_encode($settings, true); ?>'>
     <?php
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     protected function content_template()
     {

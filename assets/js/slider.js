@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
         $('.story-slideshow').slick({
             dots: true,
             arrows: true,
+            prevArrow : $(".slide_previous"),
+            nextArrow : $(".slide_next"),
             infinite: true,
             pauseOnHover: true,
             pauseOnFocus: true,
@@ -28,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                 breakpoint: 980,
                 settings: {
-                arrows: true,
+                    arrows: true,
                 }
             }
             ]

@@ -55,84 +55,12 @@ ratio 4:3    padding-bottom: 75%;
 /* Position Slick dots container down some so
      controls are positioned under slider
 */
-.story-slideshow ul.slick-dots {
-    margin-top: 40px;
-}
 
-.story-slideshow ul.slick-dots:hover {
-    opacity: 0.95;
-}
 
 /* Add bottom margin to slideshow slide 
     to push arrows and dots down some */
 .image-slideshow-slide {
-    margin-bottomx: 50px;
-}
-
-.story-slideshow .slick-dots button {
-    background: #3c3b6e;
-    color: white;
-    border: 1px solid white;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-right: 10px;
-    padding-left: 10px;
-    cursor: pointer;
-    opacity: 1;
-}
-
-.story-slideshow .slick-dots>li {
-    display: inline-block;
-    margin: 10px;
-}
-
-.story-slideshow .slick-dots>.slick-active {
-    color: #B22234;
-    font-weight: bold;
-}
-
-.story-slideshow .slick-dots {
-    list-style: none;
-    transition: 0.2s;
-    /* Align arrows left */
-    text-align: left;
-    padding: 0;
-    position: relative;
-    /* Set width and center dots/arrow container so slider controls aren't flush
-  - i.e. add a little left and right spacing under slide. */
-    width: 95%;
-    margin: 0 auto;
-}
-
-.story-slideshow .slick-dots li {
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 5px;
-}
-
-.story-slideshow .slick-dots li button {
-    border: none;
-    cursor: pointer;
-    font-size: 12px;
-    box-shadow: 0 0 0 0 transparent;
-    color: #fff;
-    transition: all 0.3s ease;
-    opacity: 0.8;
-}
-
-.story-slideshow .slick-dots li button:focus {
-    outline: none;
-}
-
-.story-slideshow .slick-dots li button:hover {
-    opacity: 1;
-    background: #B22234;
-}
-
-.story-slideshow .slick-dots li.slick-active button {
-    background: #B22234;
-    box-shadow: 0 0 0 1px #fff;
-    opacity: 0.9;
+    margin-bottom: 50px;
 }
 
 /* Hide defualt slick prev - next text
@@ -172,34 +100,6 @@ ratio 4:3    padding-bottom: 75%;
 
 .story-slideshow .slick-arrow:active {
     transform: translateY(-50%) scale(0.9);
-}
-
-.story-slideshow .slick-prev {
-    right: 75px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.story-slideshow .slick-next {
-    right: 25px;
-    padding-left: 8px;
-    padding-right: 8px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.story-slideshow .slick-prev:before {
-    content: "←";
-    color: white;
-    font-size: 20px;
-}
-
-.story-slideshow .slick-next:before {
-    content: "→";
-    color: white;
-    font-size: 20px;
 }
 
 .story-slide a {
@@ -326,4 +226,46 @@ ul {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 0px;
+}
+
+.slider_btns{
+    text-align: center;
+}
+
+.slick-dots li {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.slick-dots li button:before {
+    content: '•';
+    font-size: 22px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    opacity: .25;
+    color: black;
 }
