@@ -593,15 +593,8 @@ class Slider extends \Elementor\Widget_Base
     protected function render()
     {
         $settings = $this->get_settings_for_display();
-
-        //echo "<pre>";
-       // echo $settings['img-desc'];
-       
-        //exit();
-        //print_r ($settings); 
-        //exit();
 ?>
-        <button class="slide_previous"><?php print_r($settings['next_icon'])?></button>
+        <button class="slide_previous"><?php \Elementor\Icons_Manager::render_icon( $settings['previous_icon'], [ 'aria-hidden' => 'true' ] ); ?></button>
         <div class="story-slideshow">
             <?php
             foreach ($settings['list'] as  $value) {
@@ -633,7 +626,7 @@ class Slider extends \Elementor\Widget_Base
                 </div>
             <?php }  ?>
         </div>
-        <button class="slide_next">Next</button>
+        <button class="slide_next"><?php \Elementor\Icons_Manager::render_icon( $settings['next_icon'], [ 'aria-hidden' => 'true' ] ); ?></button>
         <input type="hidden" id="slider_settings" value='<?php echo json_encode($settings, true); ?>'>
     <?php
     }
@@ -641,7 +634,9 @@ class Slider extends \Elementor\Widget_Base
     protected function content_template()
     {
     ?>
+        <# var previous_icon = elementor.helpers.renderIcon( view, settings.previous_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
         <# if ( settings.list.length ) { #>
+            <button class="slide_previous">{{{ previous_icon.value }}}</button>
             <div class="story-slideshow">
                 <# _.each( settings.list, function( item ) { #>
                     <div class="story-slide">
@@ -657,6 +652,8 @@ class Slider extends \Elementor\Widget_Base
                     </div>
                     <# }); #>
             </div>
+            <# var next_icon = elementor.helpers.renderIcon( view, settings.next_icon, { 'aria-hidden': true }, 'i' , 'object' ); #>
+            <button class="slide_next">{{{ next_icon.value }}}</button>
             <# } #>
         <?php
     }
