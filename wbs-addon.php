@@ -18,8 +18,10 @@ function register_custom_widget($widgets_master)
 {
     require_once(__DIR__.'/widgets/slider.php');
     require_once(__DIR__.'/widgets/feature-box.php');
+    require_once(__DIR__.'/widgets/services.php');
     $widgets_master->register(new \Slider() );
     $widgets_master->register(new \Feature_Box() );
+    $widgets_master->register(new \Services() );
 }
 
 function add_elementor_widget_categories( $elements_manager ) {
