@@ -56,6 +56,7 @@ add_action( 'init', 'add_services_taxonomies');
 // Registering Custom Tags
 
 add_action( 'init', 'add_services_tags');
+add_action( 'init', 'add_case_study_tags');
 
 
 ?>

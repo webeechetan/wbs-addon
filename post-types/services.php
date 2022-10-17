@@ -36,7 +36,7 @@ function add_services_taxonomies() {
 		  'new_item_name' => __( 'New Category Name' ),
 		  'menu_name' => __( 'Category' ),
 		),
-		'show_in_rest'      => true,
+		'show_in_rest' => true,
 	);
 	register_taxonomy('services_taxonomy', ['services'], $args);
   }
