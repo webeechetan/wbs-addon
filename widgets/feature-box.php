@@ -326,6 +326,23 @@ class Feature_Box extends \Elementor\Widget_Base
 		);
 
 		$this->add_responsive_control(
+			'title_top_space',
+			[
+				'label' => esc_html__( 'Top Spacing', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-heading-title' => 'margin-top: {{SIZE}}{{UNIT}};',
+				]
+			]
+		);
+
+		$this->add_responsive_control(
 			'title_bottom_space',
 			[
 				'label' => esc_html__( 'Bottom Spacing', 'elementor' ),
@@ -372,7 +389,7 @@ class Feature_Box extends \Elementor\Widget_Base
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'section_style_feature_box_title_typography',
-				'selector' => '{{WRAPPER}} .elementor-feature-box-content .elementor-heading-title',
+				'selector' => '{{WRAPPER}} .elementor-feature-box-content',
 				'global' => [
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
@@ -430,6 +447,57 @@ class Feature_Box extends \Elementor\Widget_Base
 			]
 		);
 
+		$this->end_controls_section();
+
+		// Button Styles
+
+		$this->start_controls_section(
+			'feature_box_button',
+			[
+				'label' => esc_html__( 'Button', 'elementor' ),
+				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_control(
+			'button_color',
+			[
+				'label' => esc_html__( 'Color', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .feature-box-button' => 'background-color: {{VALUE}};',
+				],
+				'global' => [
+					'default' => Global_Colors::COLOR_TEXT,
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_hover_color',
+			[
+				'label' => esc_html__( 'Hover', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .feature-box-button:hover ' => 'color: {{VALUE}};',
+				],
+				'separator' =>'after'
+			]
+		);
+		
+		$this->add_responsive_control(
+			'button_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'elementor' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .feature-box-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -488,7 +556,7 @@ class Feature_Box extends \Elementor\Widget_Base
 			<?php } ?>
 			<p class="elementor-feature-box-description"><?php echo $settings['description']; ?></p>
 			<?php if ($settings['read_more_button_text'] != '') { ?>
-				<button><a <?php echo $this->get_render_attribute_string('read_more_button_link'); ?>><?php echo $settings['read_more_button_text'] ?></a></button>
+				<button class="feature-box-button"><a <?php echo $this->get_render_attribute_string('read_more_button_link'); ?>><?php echo $settings['read_more_button_text'] ?></a></button>
 			<?php } ?>
 		</div>
 <?php
