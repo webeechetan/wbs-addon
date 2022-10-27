@@ -1,0 +1,68 @@
+/*--- title --*/
+.wrap-services-post .item {
+  display: flex;
+  justify-content: space-between;
+}
+.wrap-services-post .item .services-post {
+  margin-bottom: 39px;
+}
+.services-post .featured-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+}
+.featured-post a {
+  position: relative;
+  display: inline-block;
+}
+.services-post .featured-post img {
+  transition: all 0.5s ease-in-out;
+}
+.services-post .featured-post {
+  border-radius: 5px;
+}
+.services-post .content {
+  padding: 31px 30px 23px 33px;
+  position: relative;
+  box-shadow: 0px 10px 30px 3px rgb(0 0 0 / 5%);
+  border-radius: 5px;
+  margin: -28px 15px 0 15px;
+  background: #fff;
+}
+.services-post .content {
+  transition: all 0.5s ease-in-out;
+}
+.services-post .title a {
+  color: inherit;
+}
+.wrap-services-post .services-post .desc {
+  color: #091d3e;
+  line-height: 1.9;
+}
+.services-post .tf-button-container {
+  margin-top: 21px;
+}
+.services-post .tf-button-container a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #091d3e;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding: 10px 10px;
+  border: 2px solid rgba(51, 185, 203, 0.2);
+  position: relative;
+}
+.services-post .tf-button-container a i {
+  margin-left: 7px;
+  font-size: 10px;
+}
+
+.services-post .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0px 0px 8px 0px;
+}
