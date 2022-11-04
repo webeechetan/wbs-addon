@@ -1,5 +1,9 @@
 /*--- title --*/
-.wrap-services-post .item {
+:root {
+  --primary-color: #091d3e;
+  --secondary-color: #33b9cb;
+}
+.wrap-services-post {
   display: flex;
   justify-content: space-between;
 }
@@ -35,20 +39,26 @@
 .services-post .content {
   transition: all 0.5s ease-in-out;
 }
+.services-post .title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0px 0px 8px 0px;
+}
 .services-post .title a {
   color: inherit;
 }
 .wrap-services-post .services-post .desc {
-  color: #091d3e;
+  color: var(--primary-color);
   line-height: 1.9;
 }
+/*--- button---*/
 .services-post .tf-button-container {
   margin-top: 21px;
 }
 .services-post .tf-button-container a {
   font-size: 14px;
   font-weight: 500;
-  color: #091d3e;
+  color: var(--primary-color);
   display: inline-block;
   text-align: center;
   width: 100%;
@@ -60,9 +70,33 @@
   margin-left: 7px;
   font-size: 10px;
 }
-
-.services-post .title {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0px 0px 8px 0px;
+.services-post .tf-button-container a:hover {
+  color: #fff;
+}
+.services-post .tf-button-container a.btn:before {
+  background: var(--secondary-color);
+}
+.btn:hover:before {
+  transform: scale(1, 1);
+  transform-origin: top left;
+}
+.services-post .tf-button-container .btn {
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s linear;
+}
+.btn:hover {
+  background-color: #33b9cb;
+}
+.btn:before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  content: "";
+  transition: transform 500ms ease;
+  transform: scale(0, 1);
+  transform-origin: right top;
 }
